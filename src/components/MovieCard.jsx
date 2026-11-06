@@ -6,6 +6,7 @@ export default function MovieCard({ movie, onDetails, onTrailer, index = 0 }) {
   return <motion.article className="movie-card" initial={{opacity:0,y:35}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.1}} transition={{duration:.52, delay:Math.min(index*.07,.4)}}>
     <div className="movie-card__art">
       <Poster movie={movie}/>
+      <button type="button" className="movie-card__open" onClick={() => onDetails(movie)} aria-label={`Open ${movie.title} details`} />
       <span className="movie-card__badge">{movie.category === 'upcoming' ? 'COMING SOON' : 'RELEASED TITLE'}</span>
       <div className="movie-card__overlay">
         <button className="icon-circle" title={`Search trailer for ${movie.title}`} onClick={() => onTrailer(movie)} aria-label={`Search trailer for ${movie.title}`}><Play fill="currentColor" size={17}/></button>
